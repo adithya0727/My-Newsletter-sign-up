@@ -39,8 +39,10 @@ let api_str = api_key.toString();
 
 const options = {
     method: "POST",
-    auth :"my_Newsletter_signup:" + api_str
-
+    headers: {
+        "Authorization": "Basic " + Buffer.from("my_Newsletter_signup:" + api_key).toString("base64"),
+        "Content-Type": "application/json"
+    }
 };
 
 
