@@ -34,7 +34,7 @@ var data = {
 };
 const jsondata = JSON.stringify(data);
 const api_key = process.env.API_KEY;
-const url = "https://us21.api.mailchimp.com/3.0/lists/acf856d8bf"
+const url = "https://us21.api.mailchimp.com/3.0/lists/acf856d8bf/members"
 let api_str = api_key.toString();
 
 const options = {
@@ -46,9 +46,9 @@ const options = {
 };
 
 
-const request = https.request(url,options,function(respone){
+const request = https.request(url,options,function(response){
     
-    if(respone.statusCode === 200){
+    if(response.statusCode === 200){
         res.sendFile(__dirname + "/success.html")
     }
     else{
@@ -58,7 +58,7 @@ const request = https.request(url,options,function(respone){
     
     
     
-    respone.on("data",function(data){
+    response.on("data",function(data){
         console.log(JSON.parse(data));
     })
 })
