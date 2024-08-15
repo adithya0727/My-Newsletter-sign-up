@@ -34,11 +34,13 @@ var data = {
 };
 const jsondata = JSON.stringify(data);
 const api_key = process.env.API_KEY;
-const url = "https://us21.api.mailchimp.com/3.0/lists/acf856d8bf/members"
+const url = "https://us21.api.mailchimp.com/3.0/lists/acf856d8bf";
 
 const options = {
     method: "POST",
-        "Key": + api_key
+    headers: {
+     Authorization: "auth " + api_key;   
+    }
 };
 
 
