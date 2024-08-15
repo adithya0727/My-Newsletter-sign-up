@@ -16,10 +16,6 @@ app.post("/", function(req,res){
     var email = req.body.email
     console.log(firstname,lastname,email)
 
-
-
-
-
 var data = {
   members : [
     {
@@ -39,7 +35,7 @@ const url = "https://us21.api.mailchimp.com/3.0/lists/acf856d8bf";
 const options = {
     method: "POST",
     headers: {
-     Authorization: "auth " + api_key;   
+     Authorization: "auth " + api_key   
     }
 };
 
@@ -53,9 +49,6 @@ const request = https.request(url,options,function(response){
         res.sendFile(__dirname + "/failure.html")
     }
     
-    
-    
-    
     response.on("data",function(data){
         console.log(JSON.parse(data));
     })
@@ -67,3 +60,7 @@ const request = https.request(url,options,function(response){
 app.post("/failure",function(req,res){
     res.redirect("/")
 })
+
+app.listen(3000, function() {
+    console.log("Server is running on port 3000");
+  });
