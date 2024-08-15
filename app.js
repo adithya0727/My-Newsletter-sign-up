@@ -39,7 +39,7 @@ let api_str = api_key.toString();
 
 const options = {
     method: "POST",
-    auth :"adi:" + api_str
+    auth :"my_Newsletter_signup" + api_str
 
 };
 
