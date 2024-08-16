@@ -1,7 +1,7 @@
 const express = require('express')
 require('dotenv').config();
 const app = express()
-
+const render = require('render');
 const bodyparser = require('body-parser');
 const https = require("https");
 
@@ -60,7 +60,9 @@ const request = https.request(url,options,function(response){
 app.post("/failure",function(req,res){
     res.redirect("/")
 })
-const port = process.env.PORT || 3000;
-app.listen(port, '0.0.0.0', function() {
-    console.log("Server is running on port " + port);
-}); 
+ 
+
+render(app, {
+  port: process.env.PORT || 3000,
+  host: '0.0.0.0',
+});
