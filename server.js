@@ -41,15 +41,22 @@ const options = {
 
 const request = https.request(url,options,function(response){
     
-    if(response.statusCode === 200){
-        res.sendFile(__dirname + "/success.html")
-    }
-    else{
-        res.sendFile(__dirname + "/failure.html")
-    }
-    
-    response.on("data",function(data){
-        console.log(JSON.parse(data));
+    let responseBody = '';
+    response.on("data", function(chunk) {
+        responseBody += chunk;
+    });
+    response.on("end", function() {
+        if(response.statusCode === 200){
+            res.sendFile(__dirname + "/success.html")
+        }
+        else{
+            res.sendFile(__dirname + "/failure.html")
+        }
+        try {
+            console.log(JSON.parse(responseBody));
+        } catch (error) {
+            console.error(error);
+        }
     })
 })
  request.write(jsondata)
