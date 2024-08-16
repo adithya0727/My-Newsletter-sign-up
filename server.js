@@ -35,7 +35,7 @@ const url = "https://us21.api.mailchimp.com/3.0/lists/acf856d8bf";
 const options = {
     method: "POST",
     headers: {
-     Authorization: "auth " + api_key   
+     auth : api_key  
     }
 };
 
